@@ -207,11 +207,11 @@ class dbclass:
 
 
 if __name__ == "__main__":
-    db1=dbclass('172.16.254.211',3306,'root','123456','employees')
+    db1=dbclass('x.x.x.x',3306,'root','123456','employees')
     db1.intdb()
     db1.get_checksum()
 
-    db2=dbclass('172.16.254.204',3306,'root','123456','employees')
+    db2=dbclass('x.x.x.x',3306,'root','123456','employees')
     db2.intdb()
     db2.get_checksum()
 

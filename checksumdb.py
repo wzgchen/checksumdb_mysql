@@ -3,7 +3,7 @@
 import pymysql
 from prettytable import PrettyTable
 
-'''use tab fail ,use 4 space'''
+''' python 3.5.2 mysql 5.7测试通过'''
 
 
 class dbclass:
@@ -16,7 +16,6 @@ class dbclass:
 
     def intdb(self):
         try:
-            sql_c0 = 'drop table if exists found_values;'
             sql_c1 = '''
                 CREATE TABLE found_values (
                 table_name varchar(30) not null primary key,
@@ -24,33 +23,17 @@ class dbclass:
                 crc_sha varchar(100) not null,
                 crc_md5 varchar(100) not null
                 ) '''
-            #self.cursor.execute(sql_c0)
             self.cursor.execute(sql_c1)
-
-            #sql_c2 = 'drop table if exists tchecksum;'
             sql_c3 = 'CREATE TABLE tchecksum (chk char(100)) ENGINE=blackhole;'
-            #self.cursor.execute(sql_c2)
             self.cursor.execute(sql_c3)
 
-            #sql_c4 = 'drop table if exists s1_values;'
             sql_c5 = 'CREATE TABLE s1_values LIKE found_values;'
-
-
-            #sql_c6 = 'drop table if exists s2_values;'
             sql_c7 = 'CREATE TABLE s2_values LIKE found_values;'
-
-            #sql_c8 = 'drop table if exists noprimary_table;'
             sql_c9 = 'CREATE TABLE noprimary_table (table_name varchar(30) not null primary key);'
 
 
-            #self.cursor.execute(sql_c4)
             self.cursor.execute(sql_c5)
-
-
-
-            #self.cursor.execute(sql_c6)
             self.cursor.execute(sql_c7)
-            #self.cursor.execute(sql_c8)
             self.cursor.execute(sql_c9)
             print('--------------------------------------------------------------------------------------------------------')
             print('   {} init 5 tables ok:found_values,tchecksum,s1_values,s2_values,noprimary_table'.format(self.host))
@@ -64,7 +47,6 @@ class dbclass:
 
     def get_checksum(self):
         self.cursor.execute('SHOW TABLES')
-        #tables= self.cursor.fetchall()
         tables=[t[0] for t in  self.cursor.fetchall()]
 
 

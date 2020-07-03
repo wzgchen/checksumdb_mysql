@@ -189,11 +189,14 @@ class dbclass:
 
 
 if __name__ == "__main__":
-    db1=dbclass('x.x.x.x',3306,'root','123456','employees')
+    # source db 
+    db1=dbclass(host,port,user,password,db)
     db1.intdb()
     db1.get_checksum()
 
-    db2=dbclass('x.x.x.x',3306,'root','123456','employees')
+
+    # target db
+    db2=dbclass(host,port,user,password,db)
     db2.intdb()
     db2.get_checksum()
 
